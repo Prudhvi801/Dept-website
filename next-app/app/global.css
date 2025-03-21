@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-blue: #0a192f;
+  --secondary-blue: #172a45;
+  --accent-blue: #64ffda;
+  --white: #e6f1ff;
+}
+
+body {
+  background-color: var(--primary-blue);
+  color: var(--white);
+}
+
+@layer base {
+  .bg-primary-blue {
+    background-color: var(--primary-blue);
+  }
+  
+  .bg-secondary-blue {
+    background-color: var(--secondary-blue);
+  }
+  
+  .bg-accent-blue {
+    background-color: var(--accent-blue);
+  }
+  
+  .text-primary-blue {
+    color: var(--primary-blue);
+  }
+  
+  .text-secondary-blue {
+    color: var(--secondary-blue);
+  }
+  
+  .text-accent-blue {
+    color: var(--accent-blue);
+  }
+  
+  .text-white {
+    color: var(--white);
+  }
+  
+  .border-accent-blue {
+    border-color: var(--accent-blue);
+  }
+}
