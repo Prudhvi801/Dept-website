@@ -53,3 +53,74 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(element);
     });
 });
+
+// Fetch alerts from the Next.js API
+async function fetchAlerts() {
+    try {
+      const response = await fetch('http://your-nextjs-api/api/alerts');
+      const data = await response.json();
+      
+      if (data.success) {
+        // Filter only active alerts
+        const activeAlerts = data.data.filter(alert => alert.active);
+        
+        // Sort by date, newest first
+        activeAlerts.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        // Only take the first 3 (or however many you want to display)
+        const recentAlerts = activeAlerts.slice(0, 3);
+        
+        // Update the DOM with these alerts
+        updateAlertsInDOM(recentAlerts);
+      }
+    } catch (error) {
+      console.error('Error fetching alerts:', error);
+    }
+  }
+  
+  // Update the alerts in the DOM
+  function updateAlertsInDOM(alerts) {
+    const container = document.querySelector('.notification-container');
+    if (!container) return;
+    
+    // Clear existing alerts
+    container.innerHTML = '';
+    
+    // Add each alert to the container
+    alerts.forEach((alert, index) => {
+      const alertCard = document.createElement('div');
+      alertCard.className = `notification-card ${index === 0 ? 'active' : ''}`;
+      
+      // Add "New" badge if specified
+      if (alert.isNew) {
+        const badge = document.createElement('span');
+        badge.className = 'alert-badge';
+        badge.textContent = 'New!';
+        alertCard.appendChild(badge);
+      } 
+      
+      // Add title and content
+      const title = document.createElement('h3');
+      title.textContent = alert.title;
+      alertCard.appendChild(title);
+      
+      const content = document.createElement('p');
+      content.textContent = alert.content;
+      alertCard.appendChild(content);
+      
+      // Add date
+      const date = document.createElement('div');
+      date.className = 'notification-date';
+      date.textContent = new Date(alert.date).toLocaleDateString('en-US', { 
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+      });
+      alertCard.appendChild(date);
+      
+      container.appendChild(alertCard);
+    });
+  }
+  
+  // Fetch alerts when the page loads
+  document.addEventListener('DOMContentLoaded', fetchAlerts);
