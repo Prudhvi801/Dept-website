@@ -124,3 +124,7 @@ async function fetchAlerts() {
   
   // Fetch alerts when the page loads
   document.addEventListener('DOMContentLoaded', fetchAlerts);
+
+  function explore(){
+    window.location.href="html/explore.html"
+  }

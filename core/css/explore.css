@@ -1,0 +1,114 @@
+:root {
+    --primary-blue: #0a192f;
+    --secondary-blue: #172a45;
+    --accent-blue: #64ffda;
+    --white: #e6f1ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+/* Header Styles */
+.header {
+    min-height: 100vh;
+    background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)),
+                url('https://source.unsplash.com/random/1920x1080?technology');
+    background-size: cover;
+    background-position: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 5%;
+    position: fixed;
+    width: 100%;
+    background: rgba(10, 25, 47, 0.95);
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--accent-blue);
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-img {
+    transform: rotate(360deg);
+}
+
+/* NAVIGATION MENU */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent-blue);
+}
+
+/* MOBILE MENU */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--white);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        flex-direction: column;
+        background: rgba(10, 25, 47, 0.95);
+        padding: 1rem 0;
+        text-align: center;
+        display: none; /* Hidden by default */
+    }
+
+    .nav-links.active {
+        display: flex; /* Show menu when toggled */
+    }
+
+    .logo-img {
+        height: 30px;
+    }
+
+    .logo span {
+        font-size: 1.4rem;
+    }
+}
