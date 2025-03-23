@@ -205,7 +205,7 @@ body {
     color: var(--accent-blue);
 }
 .card{
-    background-color: #6b6ea8;
+    background-color: var(--secondary-blue);
     width: 210px;
     height: 390PX;
     border-radius: 0.5rem;
