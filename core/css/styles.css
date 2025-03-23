@@ -180,7 +180,7 @@ body {
 
 .about-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 3rem;
     margin-top: 2rem;
 }
@@ -203,6 +203,35 @@ body {
 .stat-number {
     font-size: 2rem;
     color: var(--accent-blue);
+}
+.card{
+    background-color: #6b6ea8;
+    width: 210px;
+    height: 390PX;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-left: 2.5rem;
+    margin-top: 1rem;
+}
+
+.cards-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-img{
+    width:100%;
+    height:40%;
+    border-radius: 0.5rem;
+}
+
+.card-title{
+    font-weight: 600;
+}
+
+.card-info{
+    font-size: 0.85rem;
+    opacity: 0.8;
 }
 
 /* Dashboard Section */
